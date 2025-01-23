@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage('clone'){
+            steps{
+                git'https://github.com/Sairajpatil1331/Day-3.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                sh'echo "building the project..."'
+            }
+        }
+        stage('Test'){
+            steps{
+                sh'python -m unitest discover -s ./ .p "test_*.py"'
+            }
+        }
+    }
+}
